@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Yiko Chat</title>
+</head>
+<body>
+  <h4>
+    By Isaac Muaco
+  </h4>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yiko Chat</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="Ícones/images.png">
+<link rel="icon" type="image/png" sizes="32x32" href="Ícones/isaac.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Ícones/isaacicone.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="Ícones/isaac.png" type="image/png">
+    <style>
+  body {
+  background-color: #111;
+  color: #0f0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 50px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #ff0;
+}
+
+p {
+  font-size: 1.2em;
+}
+        * ,body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #fff;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #128C7E;
+            color: white;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 24px;
+        }
+
+        .header-icons i {
+            font-size: 22px;
+        }
+
+        /* Arquivadas section */
+        .arquivadas {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #f0f2f5;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .arquivadas-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .arquivadas-left i {
+            color: #54656f;
+            font-size: 20px;
+        }
+
+        .arquivadas h2 {
+            color: #54656f;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Chat list */
+        .chat-list {
+            overflow-y: auto;
+            height: calc(100vh - 132px);
+        }
+
+        .chat-item {
+            display: flex;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f2f5;
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 49px;
+            height: 49px;
+            border-radius: 50%;
+            margin-right: 15px;
+            overflow: hidden;
+            background-color: #e9edef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .chat-details {
+            flex: 1;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+
+        .chat-name {
+            font-weight: 500;
+            font-size: 16px;
+            color: #111b21;
+        }
+
+        .chat-time {
+            color: #667781;
+            font-size: 12px;
+            margin-left: auto;
+        }
+
+        .chat-message {
+            color: #667781;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 85%;
+        }
+
+        .message-status,body {
+            margin-right: 5px;
+            color: #53bdeb;
+        }
+
+        .thumbs-up {
+            color: #ffb800;
+            margin-right: 5px;
+            font-size: 18px;
+        }
+
+        /* Footer navigation */
+        h4 {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #d1d7db;
+        }
+
+        h4 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #54656f;
+        }
+
+        h4{
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+      h4 {
+            color: #128C7E;
+        }
+
+        .new-chat-button {
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            background-color: #00a884;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        /* Login & Register Screens */
+        .auth-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .auth-logo {
+            color: #128C7E;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .auth-form {
+            width: 100%;
+            max-width: 320px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .auth-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #128C7E;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #54656f;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d7db;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #128C7E;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #54656f;
+        }
+
+        .auth-switch a {
+            color: #128C7E;
+            text-decoration: none;
+        }
+
+        .profile-upload {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .profile-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e9edef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .profile-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #profile-upload {
+            display: none;
+        }
+
+        .chat-screen {
+            display: none;
+        }
+    </style>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            height: 100%;
+        }
+        
+        /* Login & Registration Page */
+        .auth-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #00a884;
+        }
+        
+        .auth-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 380px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-box h2 {
+            margin-bottom: 20px;
+            color: #128c7e;
+            text-align: center;
+        }
+        
+        .auth-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .auth-box button {
+            width: 100%;
+            padding: 12px;
+            background-color: #128c7e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        
+        .auth-box p {
+            text-align: center;
+            cursor: pointer;
+            color: #128c7e;
+        }
+        
+        .profile-upload {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .profile-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 2px solid #128c7e;
+        }
+        
+        .profile-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 30%;
+            background-color: #ffffff;
+            border-right: 1px solid #e9edef;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f0f2f5;
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-actions {
+            display: flex;
+            gap: 20px;
+            color: #54656f;
+        }
+        
+        .profile-actions i {
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .search-bar {
+            padding: 10px;
+        }
+        
+        .search-container {
+            background-color: #f0f2f5;
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-container i {
+            color: #54656f;
+            margin-right: 10px;
+        }
+        
+        .search-container input {
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+        
+        .online-status {
+            background-color: #25D366;
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 10px;
+        }
+        
+        .chats {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .chat-item {
+            display: flex;
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        
+        .chat-item:hover {
+            background-color: #f5f6f6;
+        }
+        
+        .chat-item-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .chat-item-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .online-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            background-color: #25D366;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .chat-item-info {
+            flex: 1;
+        }
+        
+        .chat-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .chat-item-name {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-item-time {
+            font-size: 12px;
+            color: #8696a0;
+        }
+        
+        .chat-item-message {
+            color: #8696a0;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Main Chat */
+        .main-chat {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #f0f2f5;
+            border-left: 1px solid #e9edef;
+        }
+        
+        .chat-header-info {
+            margin-left: 15px;
+            flex: 1;
+        }
+        
+        .chat-header-name {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-header-status {
+            font-size: 13px;
+            color: #8696a0;
+        }
+        
+        .chat-header-actions {
+            display: flex;
+            gap: 20px;
+            color: #54656f;
+        }
+        
+        .chat-header-actions i {
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            background-color: #efeae2;
+            overflow-y: auto;
+            padding: 20px;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            max-width: 65%;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            position: relative;
+            word-wrap: break-word;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            color: #8696a0;
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        .received {
+            background-color: white;
+            align-self: flex-start;
+            border-top-left-radius: 0;
+        }
+        
+        .sent {
+            background-color: #d9fdd3;
+            align-self: flex-end;
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+        
+        .voice-message {
+            display: flex;
+            align-items: center;
+        }
+        
+        .voice-player {
+            flex: 1;
+            height: 30px;
+            margin: 0 10px;
+        }
+        
+        .voice-duration {
+            font-size: 12px;
+            color: #8696a0;
+        }
+        
+        .chat-input {
+            padding: 10px 15px;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-input i {
+            font-size: 20px;
+            color: #54656f;
+            cursor: pointer;
+        }
+        
+        .message-input {
+            flex: 1;
+            background-color: white;
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+        }
+        
+        /* Friends List */
+        .friends-list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .friends-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            background-color: #008069;
+            color: white;
+        }
+        
+        .friends-header i {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        
+        .friends-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .friend-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        
+        .friend-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .friend-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .friend-info {
+            flex: 1;
+        }
+        
+        .friend-name {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .friend-status {
+            font-size: 13px;
+            color: #8696a0;
+        }
+        
+        .verification-badge {
+            color: #0088cc;
+            margin-left: 5px;
+        }
+        
+        /* Profile Settings */
+        .profile-settings {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .settings-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            background-color: #008069;
+            color: white;
+        }
+        
+        .settings-header i {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        
+        .settings-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .settings-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .settings-profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 3px solid #128c7e;
+            position: relative;
+        }
+        
+        .settings-profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .edit-profile-pic {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #128c7e;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .settings-name {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .settings-email {
+            color: #8696a0;
+            margin-bottom: 20px;
+        }
+        
+        .settings-section {
+            margin-bottom: 20px;
+        }
+        
+        .settings-section h3 {
+            margin-bottom: 15px;
+            color: #128c7e;
+        }
+        
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f0f2f5;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .settings-option:hover {
+            background-color: #e3e7ea;
+        }
+        
+        .settings-option-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .settings-option-left i {
+            margin-right: 15px;
+            color: #128c7e;
+        }
+        
+        /* Verify Account Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 20;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h3 {
+            color: #128c7e;
+        }
+        
+        .close-modal {
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .cancel-btn {
+            background-color: #f0f2f5;
+            border: none;
+        }
+        
+        .confirm-btn {
+            background-color: #128c7e;
+            color: white;
+            border: none;
+        }
+        
+        /* Voice Recording UI */
+        .voice-recording {
+            display: none;
+            align-items: center;
+            background-color: #EB684C;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: -5px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .recording-time {
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        
+        .stop-recording {
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: white;
+            color: #EB684C;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        /* Active Users */
+        .active-users {
+            padding: 10px 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: #f0f2f5;
+            border-bottom: 1px solid #e9edef;
+        }
+        
+        .active-users-container {
+            display: inline-flex;
+        }
+        
+        .active-user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .active-user-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 5px;
+            border: 2px solid #25D366;
+        }
+        
+        .active-user-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .active-user-name {
+            font-size: 12px;
+            text-align: center;
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+            }
+            
+            .main-chat {
+                display: none;
+            }
+            
+            .main-chat.active {
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .back-btn {
+                display: block !important;
+            }
+        }
+        
+        .back-btn {
+            display: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Page -->
+    <div class="auth-container" id="authPage">
+        <div class="auth-box" id="loginForm">
+            <h2>Yiko Chat</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Senha">
+            <button id="loginBtn">Entrar</button>
+            <p id="goToRegister">Não tem uma conta? Cadastre-se</p>
+        </div>
+        
+        <div class="auth-box" id="registerForm" style="display:none;">
+            <h2>Criar Conta</h2>
+            <div class="profile-upload">
+                <div class="profile-preview">
+                    <img id="profileImagePreview" src="https://via.placeholder.com/150" alt="Profile Preview">
+                </div>
+                <input type="file" id="profilePicture" accept="image/*" style="display:none;">
+                <button id="selectProfilePic">Selecionar Foto</button>
+            </div>
+            <input type="text" id="registerName" placeholder="Nome">
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="password" id="registerPassword" placeholder="Senha">
+            <button id="registerBtn">Cadastrar</button>
+            <p id="goToLogin">Já tem uma conta? Entre</p>
+        </div>
+    </div>
+    
+    <!-- Main App -->
+    <div class="container" id="appContainer" style="display:none;">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-header">
+                <div class="profile-pic">
+                    <img id="userProfilePic" src="https://via.placeholder.com/150" alt="Profile">
+                </div>
+                <div class="profile-actions">
+                    <i class="fas fa-users" id="showFriends"></i>
+                    <i class="fas fa-ellipsis-v" id="showOptions"></i>
+                </div>
+            </div>
+            
+            <!-- Active Users Section -->
+            <div class="active-users">
+                <div class="active-users-container" id="activeUsersList">
+                    <!-- Active users will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div class="search-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Pesquisar ou começar uma nova conversa">
+                </div>
+            </div>
+            
+            <div class="chats" id="chatsList">
+                <!-- Chat items will be dynamically added here -->
+            </div>
+        </div>
+        
+        <!-- Main Chat Area -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <div class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="profile-pic">
+                    <img id="currentChatPic" src="https://via.placeholder.com/150" alt="Contact">
+                </div>
+                <div class="chat-header-info">
+                    <div class="chat-header-name" id="currentChatName">
+                        Nome do Contato
+                        <span id="currentChatVerified" class="verification-badge" style="display:none;">
+                            <i class="fas fa-check-circle"></i>
+                        </span>
+                    </div>
+                    <div class="chat-header-status" id="currentChatStatus">offline</div>
+                </div>
+                <div class="chat-header-actions">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="messagesContainer">
+                <!-- Messages will be dynamically added here -->
+            </div>
+            
+            <div class="voice-recording" id="voiceRecordingUI">
+                <i class="fas fa-microphone"></i>
+                <span class="recording-time" id="recordingTime">00:00</span>
+                <span class="stop-recording" id="stopRecording">Parar</span>
+            </div>
+            
+            <div class="chat-input">
+                <i class="far fa-smile"></i>
+                <i class="fas fa-paperclip"></i>
+                <input type="text" class="message-input" id="messageInput" placeholder="Digite uma mensagem">
+                <i class="fas fa-microphone" id="startRecording"></i>
+                <i class="fas fa-paper-plane" id="sendBtn" style="display:none;"></i>
+            </div>
+        </div>
+        
+        <!-- Friends List Overlay -->
+        <div class="friends-list" id="friendsList">
+            <div class="friends-header">
+                <i class="fas fa-arrow-left" id="closeFriends"></i>
+                <h3>Amigos</h3>
+            </div>
+            <div class="friends-content" id="friendsContent">
+                <!-- Friend items will be dynamically added here -->
+            </div>
+        </div>
+        
+        <!-- Profile Settings Overlay -->
+        <div class="profile-settings" id="profileSettings">
+            <div class="settings-header">
+                <i class="fas fa-arrow-left" id="closeSettings"></i>
+                <h3>Perfil</h3>
+            </div>
+            <div class="settings-content">
+                <div class="settings-profile">
+                    <div class="settings-profile-pic">
+                        <img id="settingsProfilePic" src="https://via.placeholder.com/150" alt="Profile">
+                        <div class="edit-profile-pic">
+                            <i class="fas fa-camera"></i>
+                            <input type="file" id="updateProfilePic" accept="image/*" style="display:none;">
+                        </div>
+                    </div>
+                    <div class="settings-name" id="settingsName">Nome do Usuário</div>
+                    <div class="settings-email" id="settingsEmail">email@exemplo.com</div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Conta</h3>
+                    <div class="settings-option" id="requestVerification">
+                        <div class="settings-option-left">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Solicitar verificação</span>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="settings-option" id="logoutBtn">
+                        <div class="settings-option-left">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Terminar sessão</span>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Verification Request Modal -->
+        <div class="modal" id="verificationModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Solicitar verificação</h3>
+                    <span class="close-modal" id="closeVerificationModal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>A verificação de conta adiciona um emblema azul ao seu perfil, indicando que é uma conta autêntica. Deseja solicitar a verificação da sua conta?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn" id="cancelVerification">Cancelar</button>
+                    <button class="modal-btn confirm-btn" id="confirmVerification">Solicitar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBO_lkHCi7QIOcE1vbNEtx3gknsDfZHAps",
+            authDomain: "banco-de-dadossy.firebaseapp.com",
+            projectId: "banco-de-dadossy",
+            storageBucket: "banco-de-dadossy.appspot.com",
+            messagingSenderId: "1972078944",
+            appId: "1:1972078944:web:d5c938bb64f05448f87605",
+            measurementId: "G-R5DQCJ1N66"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const rtdb = firebase.database();
+        
+        // DOM Elements
+        const authPage = document.getElementById('authPage');
+        const appContainer = document.getElementById('appContainer');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const goToRegister = document.getElementById('goToRegister');
+        const goToLogin = document.getElementById('goToLogin');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const selectProfilePic = document.getElementById('selectProfilePic');
+        const profilePicture = document.getElementById('profilePicture');
+        const profileImagePreview = document.getElementById('profileImagePreview');
+        const userProfilePic = document.getElementById('userProfilePic');
+        const friendsList = document.getElementById('friendsList');
+        const profileSettings = document.getElementById('profileSettings');
+        const showFriends = document.getElementById('showFriends');
+        const closeFriends = document.getElementById('closeFriends');
+        const showOptions = document.getElementById('showOptions');
+        const closeSettings = document.getElementById('closeSettings');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const startRecording = document.getElementById('startRecording');
+        const stopRecording = document.getElementById('stopRecording');
+        const voiceRecordingUI = document.getElementById('voiceRecordingUI');
+        const recordingTime = document.getElementById('recordingTime');
+        const messagesContainer = document.getElementById('messagesContainer');
+        const chatsList = document.getElementById('chatsList');
+        const friendsContent = document.getElementById('friendsContent');
+        const activeUsersList = document.getElementById('activeUsersList');
+        const currentChatName = document.getElementById('currentChatName');
+        const currentChatPic = document.getElementById('currentChatPic');
+        const currentChatStatus = document.getElementById('currentChatStatus');
+        const currentChatVerified = document.getElementById('currentChatVerified');
+        const settingsProfilePic = document.getElementById('settingsProfilePic');
+        const settingsName = document.getElementById('settingsName');
+        const settingsEmail = document.getElementById('settingsEmail');
+        const updateProfilePic = document.getElementById('updateProfilePic');
+        const editProfilePic = document.querySelector('.edit-profile-pic');
+        const requestVerification = document.getElementById('requestVerification');
+        const verificationModal = document.getElementById('verificationModal');
+        const closeVerificationModal = document.getElementById('closeVerificationModal');
+        const cancelVerification = document.getElementById('cancelVerification');
+        const confirmVerification = document.getElementById('confirmVerification');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const searchInput = document.getElementById('searchInput');
+        
+        let currentUser = null;
+        let currentUserData = null;
+        let currentChatId = null;
+        let currentChatUserId = null;
+       let mediaRecorder = null;
+let audioChunks = [];
+let recordingInterval = null;
+let currentRecordingTime = 0;
+
+// Auth State Observer
+auth.onAuthStateChanged(user => {
+    if (user) {
+        currentUser = user;
+        loadUserProfile();
+        updateOnlineStatus(true);
+        loadChats();
+        loadFriends();
+        loadActiveUsers();
+        authPage.style.display = 'none';
+        appContainer.style.display = 'flex';
+    } else {
+        updateOnlineStatus(false);
+        authPage.style.display = 'flex';
+        appContainer.style.display = 'none';
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    }
+});
+
+// Online/Offline Status
+function updateOnlineStatus(isOnline) {
+    if (currentUser) {
+        const userStatusRef = rtdb.ref(`status/${currentUser.uid}`);
+        
+        // Set online status
+        userStatusRef.set({
+            status: isOnline ? 'online' : 'offline',
+            lastSeen: firebase.database.ServerValue.TIMESTAMP
+        });
+        
+        // Set disconnect handler
+        if (isOnline) {
+            rtdb.ref('.info/connected').on('value', snapshot => {
+                if (snapshot.val() === false) return;
+                
+                userStatusRef.onDisconnect().set({
+                    status: 'offline',
+                    lastSeen: firebase.database.ServerValue.TIMESTAMP
+                });
+            });
+        }
+    }
+}
+
+// Window events for online status
+window.addEventListener('beforeunload', () => {
+    updateOnlineStatus(false);
+});
+
+window.addEventListener('focus', () => {
+    updateOnlineStatus(true);
+});
+
+window.addEventListener('blur', () => {
+    updateOnlineStatus(false);
+});
+
+// Navigation between login and register
+goToRegister.addEventListener('click', () => {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
+});
+
+goToLogin.addEventListener('click', () => {
+    registerForm.style.display = 'none';
+    loginForm.style.display = 'block';
+});
+
+// Profile Picture Preview
+selectProfilePic.addEventListener('click', () => {
+    profilePicture.click();
+});
+
+profilePicture.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            profileImagePreview.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Update Profile Picture
+editProfilePic.addEventListener('click', () => {
+    updateProfilePic.click();
+});
+
+updateProfilePic.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file && currentUser) {
+        const storageRef = storage.ref(`profilePictures/${currentUser.uid}`);
+        
+        // Upload file
+        const uploadTask = storageRef.put(file);
+        
+        uploadTask.on('state_changed', 
+            null, 
+            error => {
+                alert('Erro ao atualizar foto: ' + error.message);
+            }, 
+            () => {
+                // Upload completed successfully
+                uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+                    // Update profile pic in Firestore
+                    db.collection('users').doc(currentUser.uid).update({
+                        profilePicUrl: downloadURL
+                    }).then(() => {
+                        userProfilePic.src = downloadURL;
+                        settingsProfilePic.src = downloadURL;
+                        alert('Foto de perfil atualizada com sucesso!');
+                    });
+                });
+            }
+        );
+    }
+});
+
+// Login
+loginBtn.addEventListener('click', () => {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    if (!email || !password) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+    
+    auth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
+            alert('Erro ao entrar: ' + error.message);
+        });
+});
+
+// Register
+registerBtn.addEventListener('click', () => {
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const profilePic = document.getElementById('profilePicture').files[0];
+    
+    if (!name || !email || !password) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+    
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+            const user = userCredential.user;
+            
+            // Upload profile picture if selected
+            if (profilePic) {
+                const storageRef = storage.ref(`profilePictures/${user.uid}`);
+                storageRef.put(profilePic).then(() => {
+                    storageRef.getDownloadURL().then(url => {
+                        // Save user data to Firestore
+                        db.collection('users').doc(user.uid).set({
+                            name: name,
+                            email: email,
+                            profilePicUrl: url,
+                            verified: false,
+                            verificationRequested: false,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    });
+                });
+            } else {
+                // Save user data without profile picture
+                db.collection('users').doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    profilePicUrl: 'https://via.placeholder.com/150',
+                    verified: false,
+                    verificationRequested: false,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            }
+        })
+        .catch(error => {
+            alert('Erro ao registrar: ' + error.message);
+        });
+});
+
+// Load User Profile
+function loadUserProfile() {
+    db.collection('users').doc(currentUser.uid).get()
+        .then(doc => {
+            if (doc.exists) {
+                currentUserData = doc.data();
+                userProfilePic.src = currentUserData.profilePicUrl || 'https://via.placeholder.com/150';
+                settingsProfilePic.src = currentUserData.profilePicUrl || 'https://via.placeholder.com/150';
+                settingsName.textContent = currentUserData.name;
+                settingsEmail.textContent = currentUserData.email;
+            }
+        });
+}
+
+// Load Active Users
+function loadActiveUsers() {
+    activeUsersList.innerHTML = '';
+    
+    rtdb.ref('status').on('value', snapshot => {
+        const statusData = snapshot.val() || {};
+        
+        // Get all online users
+        const onlineUserIds = Object.keys(statusData).filter(userId => 
+            statusData[userId].status === 'online' && userId !== currentUser.uid);
+        
+        if (onlineUserIds.length === 0) {
+            const noUsersMsg = document.createElement('div');
+            noUsersMsg.textContent = 'Nenhum usuário online';
+            noUsersMsg.style.padding = '10px';
+            noUsersMsg.style.color = '#8696a0';
+            activeUsersList.appendChild(noUsersMsg);
+            return;
+        }
+        
+        // Get user details from Firestore
+        onlineUserIds.forEach(userId => {
+            db.collection('users').doc(userId).get()
+                .then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        
+                        // Create active user element
+                        const activeUser = document.createElement('div');
+                        activeUser.className = 'active-user';
+                        
+                        activeUser.innerHTML = `
+                            <div class="active-user-pic">
+                                <img src="${userData.profilePicUrl || 'https://via.placeholder.com/150'}" alt="${userData.name}">
+                            </div>
+                            <div class="active-user-name">${userData.name}</div>
+                        `;
+                        
+                        activeUser.addEventListener('click', () => {
+                            startChat(userId, userData.name, userData.profilePicUrl, userData.verified);
+                        });
+                        
+                        activeUsersList.appendChild(activeUser);
+                    }
+                });
+        });
+    });
+}
+
+// Load Chats
+function loadChats() {
+    chatsList.innerHTML = '';
+    
+    db.collection('chats')
+        .where('participants', 'array-contains', currentUser.uid)
+        .orderBy('lastMessageTimestamp', 'desc')
+        .onSnapshot(querySnapshot => {
+            chatsList.innerHTML = '';
+            
+            if (querySnapshot.empty) {
+                const noChatsMsg = document.createElement('div');
+                noChatsMsg.textContent = 'Nenhuma conversa encontrada';
+                noChatsMsg.style.padding = '20px';
+                noChatsMsg.style.textAlign = 'center';
+                noChatsMsg.style.color = '#8696a0';
+                chatsList.appendChild(noChatsMsg);
+                return;
+            }
+            
+            querySnapshot.forEach(doc => {
+                const chatData = doc.data();
+                const otherUserId = chatData.participants.find(id => id !== currentUser.uid);
+                
+                db.collection('users').doc(otherUserId).get()
+                    .then(userDoc => {
+                        if (userDoc.exists) {
+                            const userData = userDoc.data();
+                            
+                            // Check online status
+                            rtdb.ref(`status/${otherUserId}`).once('value', statusSnapshot => {
+                                const isOnline = statusSnapshot.exists() && 
+                                                statusSnapshot.val().status === 'online';
+                                
+                                // Create chat item
+                                const chatItem = document.createElement('div');
+                                chatItem.className = 'chat-item';
+                                chatItem.dataset.chatId = doc.id;
+                                chatItem.dataset.userId = otherUserId;
+                                
+                                // Format last message time
+                                let lastMessageTime = '';
+                                if (chatData.lastMessageTimestamp) {
+                                    const timestamp = chatData.lastMessageTimestamp.toDate();
+                                    const today = new Date();
+                                    
+                                    if (timestamp.getDate() === today.getDate() &&
+                                        timestamp.getMonth() === today.getMonth() &&
+                                        timestamp.getFullYear() === today.getFullYear()) {
+                                        // Today, show time
+                                        lastMessageTime = timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                                    } else {
+                                        // Not today, show date
+                                        lastMessageTime = timestamp.toLocaleDateString();
+                                    }
+                                }
+                                
+                                chatItem.innerHTML = `
+                                    <div class="chat-item-pic">
+                                        <img src="${userData.profilePicUrl || 'https://via.placeholder.com/150'}" alt="${userData.name}">
+                                        ${isOnline ? '<div class="online-indicator"></div>' : ''}
+                                    </div>
+                                    <div class="chat-item-info">
+                                        <div class="chat-item-header">
+                                            <div class="chat-item-name">
+                                                ${userData.name}
+                                                ${userData.verified ? '<i class="fas fa-check-circle verification-badge"></i>' : ''}
+                                            </div>
+                                            <div class="chat-item-time">${lastMessageTime}</div>
+                                        </div>
+                                        <div class="chat-item-message">
+                                            ${chatData.lastMessageType === 'voice' ? 
+                                                '<i class="fas fa-microphone"></i> Mensagem de voz' : 
+                                                (chatData.lastMessage || 'Nenhuma mensagem ainda...')}
+                                        </div>
+                                    </div>
+                                `;
+                                
+                                chatItem.addEventListener('click', () => {
+                                    openChat(doc.id, userData.name, userData.profilePicUrl, otherUserId, userData.verified);
+                                });
+                                
+                                chatsList.appendChild(chatItem);
+                            });
+                        }
+                    });
+            });
+        });
+}
+
+// Load Friends
+function loadFriends() {
+    friendsContent.innerHTML = '';
+    
+    db.collection('users').get()
+        .then(querySnapshot => {
+            if (querySnapshot.size <= 1) {
+                const noFriendsMsg = document.createElement('div');
+                noFriendsMsg.textContent = 'Nenhum usuário encontrado';
+                noFriendsMsg.style.padding = '20px';
+                noFriendsMsg.style.textAlign = 'center';
+                noFriendsMsg.style.color = '#8696a0';
+                friendsContent.appendChild(noFriendsMsg);
+                return;
+            }
+            
+            querySnapshot.forEach(doc => {
+                if (doc.id !== currentUser.uid) {
+                    const userData = doc.data();
+                    
+                    // Check online status
+                    rtdb.ref(`status/${doc.id}`).once('value', statusSnapshot => {
+                        const isOnline = statusSnapshot.exists() && 
+                                        statusSnapshot.val().status === 'online';
+                        
+                        // Create friend item
+                        const friendItem = document.createElement('div');
+                        friendItem.className = 'friend-item';
+                        
+                        friendItem.innerHTML = `
+                            <div class="friend-pic">
+                                <img src="${userData.profilePicUrl || 'https://via.placeholder.com/150'}" alt="${userData.name}">
+                                ${isOnline ? '<div class="online-indicator"></div>' : ''}
+                            </div>
+                            <div class="friend-info">
+                                <div class="friend-name">
+                                    ${userData.name}
+                                    ${userData.verified ? '<i class="fas fa-check-circle verification-badge"></i>' : ''}
+                                </div>
+                                <div class="friend-status">${isOnline ? 'Online' : 'Offline'}</div>
+                            </div>
+                        `;
+                        
+                        friendItem.addEventListener('click', () => {
+                            startChat(doc.id, userData.name, userData.profilePicUrl, userData.verified);
+                            friendsList.style.display = 'none';
+                        });
+                        
+                        friendsContent.appendChild(friendItem);
+                    });
+                }
+            });
+        });
+}
+
+// Search functionality
+searchInput.addEventListener('input', e => {
+    const searchText = e.target.value.toLowerCase();
+    
+    // Filter chat items
+    const chatItems = chatsList.querySelectorAll('.chat-item');
+    chatItems.forEach(item => {
+        const name = item.querySelector('.chat-item-name').textContent.toLowerCase();
+        if (name.includes(searchText)) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+// Open Chat
+function openChat(chatId, name, profilePic, userId, verified) {
+    currentChatId = chatId;
+    currentChatUserId = userId;
+    currentChatName.textContent = name;
+    currentChatPic.src = profilePic || 'https://via.placeholder.com/150';
+    
+    // Show verification badge if user is verified
+    if (verified) {
+        currentChatVerified.style.display = 'inline';
+    } else {
+        currentChatVerified.style.display = 'none';
+    }
+    
+    // Update chat status
+    updateChatStatus(userId);
+    
+    // Load messages
+    messagesContainer.innerHTML = '';
+    
+    db.collection('chats').doc(chatId)
+        .collection('messages')
+        .orderBy('timestamp')
+        .onSnapshot(querySnapshot => {
+            // Don't clear messages container to avoid flickering
+            let newMessages = [];
+            
+            querySnapshot.docChanges().forEach(change => {
+                if (change.type === 'added') {
+                    const messageData = change.doc.data();
+                    const messageElement = createMessageElement(messageData);
+                    newMessages.push({
+                        timestamp: messageData.timestamp ? messageData.timestamp.toDate().getTime() : 0,
+                        element: messageElement
+                    });
+                }
+            });
+            
+            // Sort messages by timestamp
+            newMessages.sort((a, b) => a.timestamp - b.timestamp);
+            
+            // Append new messages
+            newMessages.forEach(message => {
+                messagesContainer.appendChild(message.element);
+            });
+            
+            // Scroll to bottom if new messages were added
+            if (newMessages.length > 0) {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        });
+    
+    // On mobile, show chat view
+    if (window.innerWidth <= 768) {
+        document.querySelector('.main-chat').classList.add('active');
+    }
+    
+    // Focus on input
+    messageInput.focus();
+}
+
+// Update chat status
+function updateChatStatus(userId) {
+    rtdb.ref(`status/${userId}`).on('value', snapshot => {
+        if (snapshot.exists()) {
+            const statusData = snapshot.val();
+            if (statusData.status === 'online') {
+                currentChatStatus.textContent = 'online';
+                currentChatStatus.style.color = '#25D366';
+            } else {
+                const lastSeen = new Date(statusData.lastSeen);
+                currentChatStatus.textContent = `visto por último em ${lastSeen.toLocaleDateString()} às ${lastSeen.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                currentChatStatus.style.color = '#8696a0';
+            }
+        } else {
+            currentChatStatus.textContent = 'offline';
+            currentChatStatus.style.color = '#8696a0';
+        }
+    });
+}
+
+// Create message element
+function createMessageElement(messageData) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${messageData.senderId === currentUser.uid ? 'sent' : 'received'}`;
+    
+    const time = messageData.timestamp ? new Date(messageData.timestamp.toDate()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '';
+    
+    if (messageData.type === 'text') {
+        messageDiv.innerHTML = `
+            <div class="message-content">${messageData.text}</div>
+            <div class="message-time">${time}</div>
+        `;
+    } else if (messageData.type === 'voice') {
+        messageDiv.innerHTML = `
+            <div class="voice-message">
+                <i class="fas fa-play"></i>
+                <audio class="voice-player" controls src="${messageData.voiceUrl}"></audio>
+                <span class="voice-duration">${messageData.duration || '00:00'}</span>
+            </div>
+            <div class="message-time">${time}</div>
+        `;
+    }
+    
+    return messageDiv;
+}
+
+// Start new chat
+function startChat(userId, name, profilePic, verified) {
+    // Check if chat already exists
+    db.collection('chats')
+        .where('participants', 'array-contains', currentUser.uid)
+        .get()
+        .then(querySnapshot => {
+            let chatExists = false;
+            let existingChatId = null;
+            
+            querySnapshot.forEach(doc => {
+                const chatData = doc.data();
+                if (chatData.participants.includes(userId)) {
+                    chatExists = true;
+                    existingChatId = doc.id;
+                }
+            });
+            
+            if (chatExists) {
+                openChat(existingChatId, name, profilePic, userId, verified);
+            } else {
+                // Create new chat
+                db.collection('chats').add({
+                    participants: [currentUser.uid, userId],
+                    lastMessage: '',
+                    lastMessageType: 'text',
+                    lastMessageTimestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(docRef => {
+                    openChat(docRef.id, name, profilePic, userId, verified);
+                });
+            }
+        });
+}
+
+// Show message input or voice recording UI based on input
+messageInput.addEventListener('input', () => {
+    if (messageInput.value.trim()) {
+        startRecording.style.display = 'none';
+        sendBtn.style.display = 'block';
+    } else {
+        startRecording.style.display = 'block';
+        sendBtn.style.display = 'none';
+    }
+});
+
+// Send message
+sendBtn.addEventListener('click', sendTextMessage);
+messageInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+        sendTextMessage();
+    }
+});
+
+function sendTextMessage() {
+    const message = messageInput.value.trim();
+    
+    if (message && currentChatId) {
+        // Add message to Firestore
+        db.collection('chats').doc(currentChatId)
+            .collection('messages').add({
+                text: message,
+                type: 'text',
+                senderId: currentUser.uid,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        
+        // Update last message
+        db.collection('chats').doc(currentChatId).update({
+            lastMessage: message,
+            lastMessageType: 'text',
+            lastMessageTimestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        
+        // Clear input
+        messageInput.value = '';
+        startRecording.style.display = 'block';
+        sendBtn.style.display = 'none';
+    }
+}
+
+// Voice recording
+startRecording.addEventListener('click', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+        
+        mediaRecorder.addEventListener('dataavailable', event => {
+            audioChunks.push(event.data);
+        });
+        
+        mediaRecorder.addEventListener('stop', () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+            sendVoiceMessage(audioBlob);
+        });
+        
+        // Start recording
+        mediaRecorder.start();
+        
+        // Show recording UI
+        voiceRecordingUI.style.display = 'flex';
+        
+        // Start timer
+        currentRecordingTime = 0;
+        recordingInterval = setInterval(() => {
+            currentRecordingTime++;
+            const minutes = Math.floor(currentRecordingTime / 60).toString().padStart(2, '0');
+            const seconds = (currentRecordingTime % 60).toString().padStart(2, '0');
+            recordingTime.textContent = `${minutes}:${seconds}`;
+        }, 1000);
+        
+    } catch (error) {
+        alert('Erro ao acessar o microfone: ' + error.message);
+    }
+});
+
+stopRecording.addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+        clearInterval(recordingInterval);
+        voiceRecordingUI.style.display = 'none';
+        
+        // Stop all tracks
+        mediaRecorder.stream.getTracks().forEach(track => track.stop());
+    }
+});
+
+async function sendVoiceMessage(audioBlob) {
+    if (currentChatId) {
+        const storageRef = storage.ref(`voiceMessages/${currentChatId}/${Date.now()}`);
+        
+        // Upload voice message
+        const uploadTask = storageRef.put(audioBlob);
+        
+        uploadTask.on('state_changed', 
+            null, 
+            error => {
+                alert('Erro ao enviar mensagem de voz: ' + error.message);
+            }, 
+            () => {
+                // Upload completed successfully
+                uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+                    // Get duration
+                    const minutes = Math.floor(currentRecordingTime / 60).toString().padStart(2, '0');
+                    const seconds = (currentRecordingTime % 60).toString().padStart(2, '0');
+                    const duration = `${minutes}:${seconds}`;
+                    
+                    // Add message to Firestore
+                    db.collection('chats').doc(currentChatId)
+                        .collection('messages').add({
+                            voiceUrl: downloadURL,
+                            duration: duration,
+                            type: 'voice',
+                            senderId: currentUser.uid,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    
+                    // Update last message
+                    db.collection('chats').doc(currentChatId).update({
+                        lastMessage: 'Mensagem de voz',
+                        lastMessageType: 'voice',
+                        lastMessageTimestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                });
+            }
+        );
+    }
+}
+
+// Verification Request
+requestVerification.addEventListener('click', () => {
+    verificationModal.style.display = 'flex';
+});
+
+closeVerificationModal.addEventListener('click', () => {
+    verificationModal.style.display = 'none';
+});
+
+cancelVerification.addEventListener('click', () => {
+    verificationModal.style.display = 'none';
+});
+
+confirmVerification.addEventListener('click', () => {
+    // Update user verification status
+    db.collection('users').doc(currentUser.uid).update({
+        verificationRequested: true
+    }).then(() => {
+        alert('Solicitação de verificação enviada com sucesso!');
+        verificationModal.style.display = 'none';
+    }).catch(error => {
+        alert('Erro ao solicitar verificação: ' + error.message);
+    });
+});
+
+// Show/Hide Friends List
+showFriends.addEventListener('click', () => {
+    friendsList.style.display = 'flex';
+});
+
+closeFriends.addEventListener('click', () => {
+    friendsList.style.display = 'none';
+});
+
+// Show/Hide Settings
+showOptions.addEventListener('click', () => {
+    profileSettings.style.display = 'flex';
+});
+
+closeSettings.addEventListener('click', () => {
+    profileSettings.style.display = 'none';
+});
+
+// Logout
+logoutBtn.addEventListener('click', () => {
+    const confirmLogout = confirm('Deseja encerrar a sessão?');
+    if (confirmLogout) {
+        updateOnlineStatus(false);
+        auth.signOut();
+        profileSettings.style.display = 'none';
+    }
+});
+
+// Back button for mobile
+document.querySelector('.back-btn').addEventListener('click', () => {
+    document.querySelector('.main-chat').classList.remove('active');
+});
+
+// Initialize app
+window.addEventListener('load', () => {
+    // Check if user is remembered
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            // User is signed in
+            currentUser = user;
+        }
+    });
+});
+ </script>
